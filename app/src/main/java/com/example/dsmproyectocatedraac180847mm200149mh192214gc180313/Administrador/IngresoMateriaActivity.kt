@@ -1,17 +1,31 @@
-package com.example.dsmproyectocatedraac180847mm200149mh192214gc180313
+package com.example.dsmproyectocatedraac180847mm200149mh192214gc180313.Administrador
 
 import android.app.Dialog
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.SeekBar
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
+import com.example.dsmproyectocatedraac180847mm200149mh192214gc180313.R
 import com.example.dsmproyectocatedraac180847mm200149mh192214gc180313.databinding.RgbLayoutDialogBinding
-
+import com.google.firebase.database.FirebaseDatabase
 
 class IngresoMateriaActivity: AppCompatActivity() {
+    //Conexion con firebase
+    val database = FirebaseDatabase.getInstance()
+    val reference = database.getReference("materias")
+
+    class Materia {
+        var nombre = ""
+        var descripcion = ""
+        var color = ""
+    }
+
+    val materia = Materia()
 
     private val rgbLayoutDialogBinding : RgbLayoutDialogBinding by lazy {
         RgbLayoutDialogBinding.inflate(layoutInflater)
@@ -19,7 +33,17 @@ class IngresoMateriaActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_ingreso_materia)
+        setContentView(R.layout.administrador_ingreso_materia)
+        //Datos form de ingreso de materia
+        var txtNombreMateria = EditText(this)
+        var txtDescripcionMateria = EditText(this)
+        var btnIngresarMateria = Button(this)
+
+        txtNombreMateria = findViewById(R.id.txtMateria)
+        txtDescripcionMateria = findViewById(R.id.txtDescripcionMateria)
+        btnIngresarMateria = findViewById(R.id.btnIngresarMateria)
+
+        //Parte del color picker
         val colorTxt = findViewById<TextView>(R.id.colorTxt)
         val pickColorBtn = findViewById<Button>(R.id.pickColorBtn)
 
@@ -64,7 +88,43 @@ class IngresoMateriaActivity: AppCompatActivity() {
             rgbDialog.show()
         }
 
+        //Ingreso de una materia a la base
+        btnIngresarMateria.setOnClickListener{
+            materia.nombre = txtNombreMateria.text.toString()
+            materia.descripcion = txtDescripcionMateria.text.toString()
+            materia.color = colorTxt.text.toString()
 
+            val builder = AlertDialog.Builder(this)
+
+            if(materia.nombre != "" && materia.descripcion != "")
+            {  //Ingreso a la base de datos firebase
+                val ticketRef = reference.push()
+                ticketRef.setValue(materia)
+
+                //Alerta de confirmacion
+
+                builder.setTitle("Resultado")
+                builder.setMessage("Materia ingresada con éxito!")
+
+                builder.setPositiveButton("Aceptar") { dialog, which ->
+                    //val intent = Intent(this,ListaTicket::class.java)
+                    //startActivity(intent)
+                    txtNombreMateria.setText("")
+                    txtDescripcionMateria.setText("")
+                    colorTxt.setText("#000000")
+
+                }
+            }else {
+                builder.setTitle("Atención!!")
+                builder.setMessage("Debe llenar todos los campos!")
+                builder.setPositiveButton("Aceptar") { dialog, which ->
+
+                }
+            }
+            // Mostrando la alerta
+            val dialog: AlertDialog = builder.create()
+            dialog.show()
+        }
     }
 
     private fun setOnSeekbar(type:String, typeTxt:TextView,seekBar: SeekBar,colorTxt:TextView) {
