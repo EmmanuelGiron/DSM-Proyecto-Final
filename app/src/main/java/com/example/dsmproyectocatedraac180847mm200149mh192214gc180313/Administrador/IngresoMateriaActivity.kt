@@ -1,6 +1,7 @@
 package com.example.dsmproyectocatedraac180847mm200149mh192214gc180313.Administrador
 
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -107,11 +108,11 @@ class IngresoMateriaActivity: AppCompatActivity() {
                 builder.setMessage("Materia ingresada con éxito!")
 
                 builder.setPositiveButton("Aceptar") { dialog, which ->
-                    //val intent = Intent(this,ListaTicket::class.java)
-                    //startActivity(intent)
-                    txtNombreMateria.setText("")
-                    txtDescripcionMateria.setText("")
-                    colorTxt.setText("#000000")
+                    val intent = Intent(this,ListaMateria::class.java)
+                    startActivity(intent)
+                    //txtNombreMateria.setText("")
+                    //txtDescripcionMateria.setText("")
+                    //colorTxt.setText("#000000")
 
                 }
             }else {
