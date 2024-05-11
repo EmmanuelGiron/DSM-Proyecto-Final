@@ -22,11 +22,7 @@
         </activity>
         <activity
             android:name=".Administrador.ListaMateria"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
         </activity>
         <activity
             android:name=".Administrador.ActualizarMateria"
@@ -40,5 +36,15 @@
         <activity
             android:name=".Administrador.ActualizarTermino"
             android:exported="false"/>
+        <activity
+            android:name=".Registro.Registro"
+            android:exported="false"/>
+        <activity
+            android:name=".Registro.Login"
+            android:exported="true"/>
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
     </application>
 </manifest>
