@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">DSMProyectoCatedraAC180847MM200149MH192214GC180313</string>
+
+    <!-- Sección de Login y Register -->
+    <string name="Btn_Login">Iniciar sesión</string>
+    <string name="Btn_Registro">Registrarse</string>
+    <string name="autor1">Emmanuel Antonio Girón Cornejo GC180313</string>
+    <string name="autor2">Adilson Arian Montes Martinez MM200149</string>
+
+    <string name="CrearCuentaTXT">Crear Cuenta</string>
+    <string name="Nombres">Ingrese su nombre</string>
+    <string name="Correo">Ingrese su correo</string>
+    <string name="Pass">Ingrese su contraseña</string>
+    <string name="ConfirmarContra">Ingrese de nuevo su contraseña</string>
+    <string name="RegistrarUser">Registrar</string>
+    <string name="Regresar">Regresar</string>
+    <string name="TengoUnaCuenta">Posee una cuenta?</string>
+
+    <string name="IniciarSesion">Iniciar sesión</string>
+    <string name="CorreoLog">Ingrese su Correo</string>
+    <string name="PassLog">Ingrese su Contraseña</string>
+    <string name="Btn_LogIn">Ingresar</string>
+    <string name="Register">No tienes una cuenta? Registrate</string>
+
 </resources>
