@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import  android.widget.Button
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,6 +14,15 @@ class ListaTermino: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.administrador_lista_terminos)
+
+        var arrowLeft: ImageView
+
+        arrowLeft = findViewById(R.id.btn_back)
+
+        arrowLeft.setOnClickListener{
+            val intent = Intent(this,ListaMateria::class.java)
+            startActivity(intent)
+        }
 
         var materiaActual = TextView(this)
         var insetarTermino = Button(this)

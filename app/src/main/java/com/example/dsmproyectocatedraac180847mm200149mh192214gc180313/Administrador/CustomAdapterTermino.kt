@@ -15,6 +15,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.squareup.picasso.Picasso
 
 class CustomAdapterTermino(var materiaA: String): RecyclerView.Adapter<CustomAdapterTermino.ViewHolder>() {
     //Trayendo datos de la base
@@ -50,13 +51,12 @@ class CustomAdapterTermino(var materiaA: String): RecyclerView.Adapter<CustomAda
     }
 
     fun obteniendoDatos(materiaActual:String) {
-        println(materiaActual)
+        //println(materiaActual)
         reference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for (snapshot in dataSnapshot.children) {
                     val termino = snapshot.getValue(termino::class.java)
                     val childKey = snapshot.key
-
                     if (termino != null && materiaActual == termino.materia.toString()) {
                         referencias.add(childKey.toString())
                         terminos.add(termino.nombre.toString())
@@ -69,6 +69,8 @@ class CustomAdapterTermino(var materiaA: String): RecyclerView.Adapter<CustomAda
                     }
                 }
                 notifyDataSetChanged()
+                println(referencias)
+                println(materias)
             }
             override fun onCancelled(error: DatabaseError) {
 
@@ -86,6 +88,7 @@ class CustomAdapterTermino(var materiaA: String): RecyclerView.Adapter<CustomAda
         viewHolder.itemDescripcionTermino.text = descripciones[i]
         val uri: Uri = Uri.parse(imagenes[i])
         viewHolder.itemImagenTermino.setImageURI(uri)
+        Picasso.get().load(uri).into(viewHolder.itemImagenTermino)
         viewHolder.itemURLImagen.text = imagenes[i]
 
     }
@@ -121,7 +124,7 @@ class CustomAdapterTermino(var materiaA: String): RecyclerView.Adapter<CustomAda
                 intent.putExtra("nombre",itemNombreTermino.text.toString())
                 intent.putExtra("descripcion",itemDescripcionTermino.text.toString())
                 intent.putExtra("imagen",itemURLImagen.text.toString())
-                intent.putExtra("materiActual",materiaA)
+                intent.putExtra("materiaActual",materiaA)
                 itemEditar.context.startActivity(intent)
             }
             /*

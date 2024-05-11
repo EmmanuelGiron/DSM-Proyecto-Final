@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.result.PickVisualMediaRequest
@@ -47,6 +48,10 @@ class IngresoTerminoActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.administrador_ingreso_termino)
 
+        var arrowLeft: ImageView
+
+        arrowLeft = findViewById(R.id.btn_back)
+
         var txtTermino: EditText
         var txtDescripcion: EditText
         var btnIngresarTermino: Button
@@ -68,6 +73,12 @@ class IngresoTerminoActivity: AppCompatActivity() {
         val extras = intent.extras
         materiaActual.text = extras?.getString("nombre").toString()
         termino.materia = materiaActual.text.toString()
+
+        arrowLeft.setOnClickListener{
+            val intent = Intent(this,ListaTermino::class.java)
+            intent.putExtra("nombre",materiaActual.text.toString())
+            startActivity(intent)
+        }
 
 
         //Ingreso de una termino a la base

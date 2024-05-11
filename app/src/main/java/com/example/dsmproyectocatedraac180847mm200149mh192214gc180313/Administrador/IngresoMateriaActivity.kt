@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.SeekBar
 import android.widget.TextView
@@ -35,6 +37,15 @@ class IngresoMateriaActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.administrador_ingreso_materia)
+        var arrowLeft: ImageView
+
+        arrowLeft = findViewById(R.id.btn_back)
+
+        arrowLeft.setOnClickListener{
+            val intent = Intent(this,ListaMateria::class.java)
+            startActivity(intent)
+        }
+
         //Datos form de ingreso de materia
         var txtNombreMateria = EditText(this)
         var txtDescripcionMateria = EditText(this)

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
@@ -17,6 +18,12 @@ class ActualizarTermino: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.administrador_editar_termino)
+
+        var arrowLeft: ImageView
+
+        arrowLeft = findViewById(R.id.btn_back)
+
+
 
         //Firbase
         val database = FirebaseDatabase.getInstance()
@@ -52,6 +59,11 @@ class ActualizarTermino: AppCompatActivity() {
             // Manejar el caso cuando la URL está vacía
         }
 
+        arrowLeft.setOnClickListener{
+            val intent = Intent(this,ListaTermino::class.java)
+            intent.putExtra("nombre",txtMateriaActual.text.toString())
+            startActivity(intent)
+        }
 
         btnEditar.setOnClickListener{
             val refereciaListaTerminos = database.getReference("terminos/${txtReferencia.text}")
