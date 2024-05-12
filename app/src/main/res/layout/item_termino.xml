@@ -20,68 +20,71 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp">
+
         <LinearLayout
             android:id="@+id/nombreTerminoLayout"
-            android:layout_width="match_parent"
+            android:layout_width="230dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <!--Nombre termino-->
             <TextView
                 android:id="@+id/nombreTerminoCardID"
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="202dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="65dp"
+                android:layout_marginLeft="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:text="Termino"
                 android:textSize="24sp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/imagenTerminoLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="60dp">
+            android:layout_marginTop="70dp"
+            android:orientation="horizontal">
             <!--Imagen termino termino-->
             <ImageView
                 android:id="@+id/imagenTerminoCardID"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_marginLeft="50dp"
-                />
+                android:layout_marginLeft="50dp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/botonesTerminoLayout"
-            android:layout_width="match_parent"
+            android:layout_width="231dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="30dp"
-            android:paddingLeft="40dp">
+            android:paddingLeft="40dp"
+            android:paddingTop="30dp">
 
             <TextView
                 android:id="@+id/referenciaTerminoCardID"
-                android:visibility="gone"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="" />
+                android:layout_weight="1"
+                android:text=""
+                android:visibility="gone" />
+
             <TextView
                 android:id="@+id/descripcionTerminoCardID"
-                android:visibility="gone"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="" />
+                android:layout_weight="1"
+                android:text=""
+                android:visibility="gone" />
+
             <TextView
                 android:id="@+id/urlImagenTerminoCardID"
-                android:visibility="gone"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="" />
+                android:layout_weight="1"
+                android:text=""
+                android:visibility="gone" />
         </LinearLayout>
         <!--Botones-->
         <Button

@@ -43,20 +43,22 @@
             android:layout_height="80dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingLeft="40dp"
+            android:paddingLeft="0dp"
             android:paddingTop="30dp">
             <!--Botones-->
 
             <TextView
                 android:id="@+id/nombreMateriaCardID"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:layout_marginLeft="50dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="1"
+                android:gravity="center"
+                android:text="Materia"
+                android:textColor="@color/black"
                 android:textSize="24sp"
-                android:textStyle="bold"
-                android:text="Materia" />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/referenciaMateriaCardID"

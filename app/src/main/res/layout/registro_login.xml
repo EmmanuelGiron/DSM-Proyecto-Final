@@ -45,7 +45,7 @@
 
             <EditText
                 android:id="@+id/CorreoLog"
-                android:hint="@string/CorreoLog"
+                android:hint=""
                 android:layout_width="355dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -67,7 +67,7 @@
 
             <EditText
                 android:id="@+id/PassLog"
-                android:hint="@string/PassLog"
+                android:hint=""
                 android:layout_width="355dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
