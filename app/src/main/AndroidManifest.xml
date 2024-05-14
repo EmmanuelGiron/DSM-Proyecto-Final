@@ -14,22 +14,17 @@
         tools:targetApi="31">
         <activity
             android:name=".Administrador.flipcard"
-            android:exported="true">
-            <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+            android:exported="false">
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="false"></activity>
+            android:exported="false"/>
         <activity
             android:name=".Administrador.IngresoMateriaActivity"
-            android:exported="false"></activity>
+            android:exported="false"/>
         <activity
             android:name=".Administrador.ListaMateria"
-            android:exported="false"></activity>
+            android:exported="false"/>
         <activity
             android:name=".Administrador.ActualizarMateria"
             android:exported="false" />
@@ -47,12 +42,11 @@
             android:exported="false" />
         <activity
             android:name=".Registro.Login"
-            android:exported="false">
-            <!--<intent-filter>
+            android:exported="true">
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>-
         </activity>
     </application>
 
