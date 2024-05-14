@@ -22,7 +22,7 @@
     <string name="Btn_LogIn">Ingresar</string>
     <string name="Register">No tienes una cuenta? Registrate</string>
 
-    <string name="users_login">Usuario</string>
+    <string name="users_login">Correo</string>
     <string name="users_password">Contraseña</string>
     <string name="forget_password">¿Has olvidado tu contraseña?</string>
     <string name="Dont_have_account">¿No tienes una cuenta?</string>
@@ -34,6 +34,7 @@
     <string name="button_create">CREAR</string>
     <string name="have_account">¿Ya tienes una cuenta?</string>
     <string name="here">Entre aqui</string>
+    <string name="back_button_description">Volver atrás</string>
 
 
 </resources>

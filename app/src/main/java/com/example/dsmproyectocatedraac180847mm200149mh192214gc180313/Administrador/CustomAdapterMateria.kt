@@ -20,7 +20,7 @@ import java.util.Calendar
 import android.graphics.drawable.ColorDrawable
 import android.widget.RelativeLayout
 
-class CustomAdapterMateria: RecyclerView.Adapter<CustomAdapterMateria.ViewHolder>() {
+class CustomAdapterMateria(private var usuarioActual: String): RecyclerView.Adapter<CustomAdapterMateria.ViewHolder>() {
     //Usuario
     val usurioActual = ""
     //Trayendo datos de la base
@@ -88,6 +88,10 @@ class CustomAdapterMateria: RecyclerView.Adapter<CustomAdapterMateria.ViewHolder
         viewHolder.itemDescripcionMateria.text = descripciones[i]
         val color = ColorDrawable(Color.parseColor(colores[i]))
         viewHolder.itemLayOutColorMateria.background = color
+        println(usuarioActual)
+        if(usuarioActual == "Administrador"){
+            viewHolder.itemEditar.visibility = View.VISIBLE
+        }
     }
 
     override fun getItemCount(): Int {
@@ -110,6 +114,8 @@ class CustomAdapterMateria: RecyclerView.Adapter<CustomAdapterMateria.ViewHolder
             itemLayOutColorMateria = itemView.findViewById(R.id.colorMateriaLayout)
             itemMateriaLayout = itemView.findViewById(R.id.MateriaLayout)
 
+
+
             //Actualizar datos
             itemEditar.setOnClickListener{
                 val intent = Intent(itemEditar.context,ActualizarMateria::class.java)
@@ -125,6 +131,7 @@ class CustomAdapterMateria: RecyclerView.Adapter<CustomAdapterMateria.ViewHolder
             itemMateriaLayout.setOnClickListener{
                 val intent = Intent(itemMateriaLayout.context,ListaTermino::class.java)
                 intent.putExtra("nombre",itemNombreMateria.text.toString())
+                intent.putExtra("usuarioActual",usuarioActual)
                 itemMateriaLayout.context.startActivity(intent)
             }
 

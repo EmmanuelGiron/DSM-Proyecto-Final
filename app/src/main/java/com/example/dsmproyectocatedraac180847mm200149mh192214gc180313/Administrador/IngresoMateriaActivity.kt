@@ -113,26 +113,18 @@ class IngresoMateriaActivity: AppCompatActivity() {
                 ticketRef.setValue(materia)
 
                 //Alerta de confirmacion
-
                 builder.setTitle("Resultado")
                 builder.setMessage("Materia ingresada con éxito!")
-
                 builder.setPositiveButton("Aceptar") { dialog, which ->
                     val intent = Intent(this, ListaMateria::class.java)
                     startActivity(intent)
-                    //txtNombreMateria.setText("")
-                    //txtDescripcionMateria.setText("")
-                    //colorTxt.setText("#000000")
-
                 }
             }else {
                 builder.setTitle("Atención!!")
                 builder.setMessage("Debe llenar todos los campos!")
                 builder.setPositiveButton("Aceptar") { dialog, which ->
-
                 }
             }
-            // Mostrando la alerta
             val dialog: AlertDialog = builder.create()
             dialog.show()
         }

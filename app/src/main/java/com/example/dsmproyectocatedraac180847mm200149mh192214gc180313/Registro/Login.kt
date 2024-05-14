@@ -10,7 +10,6 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import com.example.dsmproyectocatedraac180847mm200149mh192214gc180313.Administrador.ListaMateria
-import com.example.dsmproyectocatedraac180847mm200149mh192214gc180313.MainActivity
 import com.example.dsmproyectocatedraac180847mm200149mh192214gc180313.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -46,7 +45,7 @@ class Login : AppCompatActivity() {
         }
 
         nuevoUsuario.setOnClickListener {
-            startActivity(Intent(this@Login,Registro::class.java))
+            startActivity(Intent(this@Login, Registro::class.java))
         }
     }
 

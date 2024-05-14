@@ -52,7 +52,7 @@ class Registro : AppCompatActivity() {
         }
 
         tengoCuenta.setOnClickListener{
-            startActivity(Intent(this@Registro,Login::class.java))
+            startActivity(Intent(this@Registro, Login::class.java))
         }
 
 
