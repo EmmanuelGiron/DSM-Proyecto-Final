@@ -20,7 +20,7 @@ class ListaTermino: AppCompatActivity() {
         arrowLeft = findViewById(R.id.btn_back)
 
         arrowLeft.setOnClickListener{
-            val intent = Intent(this,ListaMateria::class.java)
+            val intent = Intent(this, ListaMateria::class.java)
             startActivity(intent)
         }
 

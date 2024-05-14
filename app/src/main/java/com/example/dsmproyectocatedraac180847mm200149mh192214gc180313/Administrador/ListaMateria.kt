@@ -3,7 +3,6 @@ package com.example.dsmproyectocatedraac180847mm200149mh192214gc180313.Administr
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -26,7 +25,7 @@ class ListaMateria: AppCompatActivity() {
         btnAgregarMateria = findViewById(R.id.btnAgregarMateria)
 
         btnAgregarMateria.setOnClickListener{
-            val intent = Intent(this,IngresoMateriaActivity::class.java)
+            val intent = Intent(this, IngresoMateriaActivity::class.java)
             this.startActivity(intent)
         }
 

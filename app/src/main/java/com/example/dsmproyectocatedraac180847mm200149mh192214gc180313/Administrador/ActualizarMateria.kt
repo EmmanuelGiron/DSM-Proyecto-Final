@@ -4,9 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.ImageButton
 import android.widget.ImageView
-import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -54,7 +52,7 @@ class ActualizarMateria: AppCompatActivity() {
         arrowLeft = findViewById(R.id.btn_back)
 
         arrowLeft.setOnClickListener{
-            val intent = Intent(this,ListaMateria::class.java)
+            val intent = Intent(this, ListaMateria::class.java)
             startActivity(intent)
         }
 
@@ -164,7 +162,7 @@ class ActualizarMateria: AppCompatActivity() {
                     builder.setTitle("Resultado")
                     builder.setMessage("Se elimino correctamente")
                     builder.setPositiveButton("Aceptar") { dialog, which ->
-                        val intent = Intent(itemBorrar.context,ListaMateria::class.java)
+                        val intent = Intent(itemBorrar.context, ListaMateria::class.java)
                         itemBorrar.context.startActivity(intent)
                     }
                     // Mostrando la alerta

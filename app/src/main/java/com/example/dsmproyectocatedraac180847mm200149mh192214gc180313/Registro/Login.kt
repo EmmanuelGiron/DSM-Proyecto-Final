@@ -9,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import com.example.dsmproyectocatedraac180847mm200149mh192214gc180313.Administrador.ListaMateria
 import com.example.dsmproyectocatedraac180847mm200149mh192214gc180313.MainActivity
 import com.example.dsmproyectocatedraac180847mm200149mh192214gc180313.R
 import com.google.firebase.auth.FirebaseAuth
@@ -67,7 +68,7 @@ class Login : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     val user: FirebaseUser? = firebaseAuth.currentUser
-                    startActivity(Intent(this@Login, MainActivity::class.java))
+                    startActivity(Intent(this@Login, ListaMateria::class.java))
                     Toast.makeText(this@Login, "Bienvenido(a): ${user?.email}", Toast.LENGTH_SHORT).show()
                     finish()
                 } else {
