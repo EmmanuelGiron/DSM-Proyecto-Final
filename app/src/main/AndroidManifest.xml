@@ -13,39 +13,47 @@
         android:theme="@style/Theme.DSMProyectoCatedraAC180847MM200149MH192214GC180313"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
-            android:exported="false">
-        </activity>
-        <activity
-            android:name=".Administrador.IngresoMateriaActivity"
-            android:exported="false">
-        </activity>
-        <activity
-            android:name=".Administrador.ListaMateria"
-            android:exported="false">
-        </activity>
-        <activity
-            android:name=".Administrador.ActualizarMateria"
-            android:exported="false"/>
-        <activity
-            android:name=".Administrador.ListaTermino"
-            android:exported="false"/>
-        <activity
-            android:name=".Administrador.IngresoTerminoActivity"
-            android:exported="false"/>
-        <activity
-            android:name=".Administrador.ActualizarTermino"
-            android:exported="false"/>
-        <activity
-            android:name=".Registro.Registro"
-            android:exported="false"/>
-        <activity
-            android:name=".Registro.Login"
+            android:name=".Administrador.flipcard"
             android:exported="true">
             <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"></activity>
+        <activity
+            android:name=".Administrador.IngresoMateriaActivity"
+            android:exported="false"></activity>
+        <activity
+            android:name=".Administrador.ListaMateria"
+            android:exported="false"></activity>
+        <activity
+            android:name=".Administrador.ActualizarMateria"
+            android:exported="false" />
+        <activity
+            android:name=".Administrador.ListaTermino"
+            android:exported="false" />
+        <activity
+            android:name=".Administrador.IngresoTerminoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Administrador.ActualizarTermino"
+            android:exported="false" />
+        <activity
+            android:name=".Registro.Registro"
+            android:exported="false" />
+        <activity
+            android:name=".Registro.Login"
+            android:exported="false">
+            <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
     </application>
+
 </manifest>
