@@ -64,6 +64,7 @@ class ActualizarMateria: AppCompatActivity() {
         var txtColor = TextView(this)
         var btnEditar = Button(this)
         var itemBorrar = Button(this)
+        var materiaActual = TextView(this)
 
         txtReferencia = findViewById(R.id.referenciaActualizarID)
         txtNombreMateria= findViewById(R.id.txtNombreEditarMateria)
@@ -78,6 +79,8 @@ class ActualizarMateria: AppCompatActivity() {
         materiaAuxiliar = txtNombreMateria.text.toString().trim()
         txtDescripcion.text = extras?.getString("descripcion").toString()
         txtColor.text = extras?.getString("color").toString()
+        materiaActual.text = extras?.getString("materiaActual").toString()
+
 
 
         btnEditar.setOnClickListener{
@@ -92,11 +95,11 @@ class ActualizarMateria: AppCompatActivity() {
                         println(termino?.materia.toString())
                         if (materiaAuxiliar == termino?.materia.toString().trim()) {
                             referencias.add(childKey.toString())
-                            materias.add(termino?.materia.toString())
+                            materias.add(termino?.materia.toString().trim())
                             val refereciaListaTerminos = database.getReference("terminos/${childKey.toString()}")
 
                                 val actualizacionesMultiples = mapOf<String, Any>(
-                                    "materia" to txtNombreMateria.text.toString()
+                                    "materia" to txtNombreMateria.text.toString().trim()
                                 )
                                 refereciaListaTerminos.updateChildren(actualizacionesMultiples)
                                     .addOnSuccessListener {
@@ -118,9 +121,9 @@ class ActualizarMateria: AppCompatActivity() {
            val refereciaListaMaterias = database.getReference("materias/${txtReferencia.text}")
            if(txtNombreMateria.text.trim().toString() != "" && txtDescripcion.text.trim().toString() != "") {
                val actualizaciones = mapOf<String, Any>(
-                   "nombre" to txtNombreMateria.text.toString(),
-                   "descripcion" to txtDescripcion.text.toString(),
-                   "color" to txtColor.text.toString()
+                   "nombre" to txtNombreMateria.text.toString().trim(),
+                   "descripcion" to txtDescripcion.text.toString().trim(),
+                   "color" to txtColor.text.toString().trim()
                )
                refereciaListaMaterias.updateChildren(actualizaciones)
                    .addOnSuccessListener {
@@ -153,8 +156,24 @@ class ActualizarMateria: AppCompatActivity() {
         //Eliminar datos
 
         itemBorrar.setOnClickListener{
-            val referecia_a_elimianr = database.getReference("materias/${txtReferencia.text}")
 
+            reference.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    for (snapshot in dataSnapshot.children) {
+                        val termino = snapshot.getValue(termino::class.java)
+                        if (materiaActual.text.toString().trim() == termino?.materia.toString().trim()) {
+                            // Obtén la referencia del hijo que deseas eliminar y llama a removeValue() en ella
+                            snapshot.ref.removeValue()
+                        }
+                    }
+                }
+            override fun onCancelled(error: DatabaseError) {
+
+                }
+            })
+
+
+        val referecia_a_elimianr = database.getReference("materias/${txtReferencia.text}")
             referecia_a_elimianr.removeValue()
                 .addOnSuccessListener {
                     //Alerta de confirmacion
@@ -175,4 +194,5 @@ class ActualizarMateria: AppCompatActivity() {
         }
     }
 
-}
+    }
+

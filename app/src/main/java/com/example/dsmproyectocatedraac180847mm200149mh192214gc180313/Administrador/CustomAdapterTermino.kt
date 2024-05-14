@@ -113,6 +113,7 @@ class CustomAdapterTermino(var materiaA: String, var usuarioActual: String): Rec
 
 
 
+
         init {
             itemReferenciaTermino = itemView.findViewById(R.id.referenciaTerminoCardID)
             itemNombreTermino = itemView.findViewById(R.id.nombreTerminoCardID)
@@ -130,6 +131,7 @@ class CustomAdapterTermino(var materiaA: String, var usuarioActual: String): Rec
                 intent.putExtra("descripcion",itemDescripcionTermino.text.toString())
                 intent.putExtra("imagen",itemURLImagen.text.toString())
                 intent.putExtra("materiaActual",materiaA)
+                intent.putExtra("usuarioActual",usuarioActual)
                 itemEditar.context.startActivity(intent)
             }
             if(usuarioActual != "Administrador"){

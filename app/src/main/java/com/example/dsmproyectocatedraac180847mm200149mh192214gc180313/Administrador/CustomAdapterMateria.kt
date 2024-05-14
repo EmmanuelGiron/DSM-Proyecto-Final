@@ -62,7 +62,7 @@ class CustomAdapterMateria(private var usuarioActual: String): RecyclerView.Adap
 
                         if (materia != null) {
                             referencias.add(childKey.toString())
-                            materias.add(materia.nombre.toString())
+                            materias.add(materia.nombre.toString().trim())
                             descripciones.add(materia.descripcion.toString())
                             colores.add(materia.color.toString())
                         }else{
@@ -121,6 +121,7 @@ class CustomAdapterMateria(private var usuarioActual: String): RecyclerView.Adap
                 val intent = Intent(itemEditar.context,ActualizarMateria::class.java)
                 intent.putExtra("referencia",itemReferenciaMateria.text.toString())
                 intent.putExtra("nombre",itemNombreMateria.text.toString())
+                intent.putExtra("materiaActual",itemNombreMateria.text.toString())
                 intent.putExtra("descripcion",itemDescripcionMateria.text.toString())
                 val backgroundColor = (itemLayOutColorMateria.background as ColorDrawable).color
                 val backgroundColorHex = String.format("#%06X", 0xFFFFFF and backgroundColor)

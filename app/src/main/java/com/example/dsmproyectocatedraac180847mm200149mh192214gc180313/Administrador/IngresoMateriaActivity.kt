@@ -49,10 +49,17 @@ class IngresoMateriaActivity: AppCompatActivity() {
         var txtNombreMateria = EditText(this)
         var txtDescripcionMateria = EditText(this)
         var btnIngresarMateria = Button(this)
+        var btnDescartarMateria = Button(this)
 
         txtNombreMateria = findViewById(R.id.txtMateria)
         txtDescripcionMateria = findViewById(R.id.txtDescripcionMateria)
         btnIngresarMateria = findViewById(R.id.btnIngresarMateria)
+        btnDescartarMateria = findViewById(R.id.btnDescartarMateria)
+
+        btnDescartarMateria.setOnClickListener{
+            val intent = Intent(this,ListaMateria::class.java)
+            startActivity(intent)
+        }
 
         //Parte del color picker
         val colorTxt = findViewById<TextView>(R.id.colorTxt)
@@ -101,9 +108,9 @@ class IngresoMateriaActivity: AppCompatActivity() {
 
         //Ingreso de una materia a la base
         btnIngresarMateria.setOnClickListener{
-            materia.nombre = txtNombreMateria.text.toString()
-            materia.descripcion = txtDescripcionMateria.text.toString()
-            materia.color = colorTxt.text.toString()
+            materia.nombre = txtNombreMateria.text.toString().trim()
+            materia.descripcion = txtDescripcionMateria.text.toString().trim()
+            materia.color = colorTxt.text.toString().trim()
 
             val builder = AlertDialog.Builder(this)
 

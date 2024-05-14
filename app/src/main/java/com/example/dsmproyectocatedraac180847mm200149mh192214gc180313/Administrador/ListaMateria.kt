@@ -8,6 +8,8 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import android.content.DialogInterface
+import android.os.Handler
+import android.os.Looper
 import android.widget.ImageView
 import androidx.appcompat.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
@@ -31,6 +33,7 @@ class ListaMateria: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.administrador_lista_materias)
+        showProgressDialog()
         //println(correoUsuarioActual)
 
         val toolbar: Toolbar = findViewById(R.id.toolbarMateria)
@@ -99,5 +102,22 @@ class ListaMateria: AppCompatActivity() {
             dialog.dismiss()
         }
         builder.show()
+    }
+    private fun showProgressDialog() {
+        // Inflar el layout del ProgressDialog
+        val dialogView = layoutInflater.inflate(R.layout.progress_bar, null)
+
+        // Crear el AlertDialog
+        val progressDialog = AlertDialog.Builder(this)
+            .setView(dialogView)
+            .setCancelable(false) // El diálogo no se puede cancelar tocando fuera de él
+            .create()
+
+        // Mostrar el AlertDialog
+        progressDialog.show()
+        // Descartar el AlertDialog después de 3 segundos
+        Handler(Looper.getMainLooper()).postDelayed({
+            progressDialog.dismiss()
+        }, 2500) // 3000 milisegundos = 3 segundos
     }
 }

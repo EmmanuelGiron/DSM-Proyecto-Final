@@ -17,6 +17,9 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.squareup.picasso.Picasso
+import android.os.Handler
+import android.os.Looper
+import org.w3c.dom.Text
 
 
 class IngresoTerminoActivity: AppCompatActivity() {
@@ -57,6 +60,8 @@ class IngresoTerminoActivity: AppCompatActivity() {
         var btnIngresarTermino: Button
         var materiaActual: TextView
         var imagen: TextView
+        var usuarioActual : TextView
+        var btnDescartarTermino: Button
 
 
         txtTermino = findViewById(R.id.txtTermino)
@@ -64,6 +69,8 @@ class IngresoTerminoActivity: AppCompatActivity() {
         btnIngresarTermino = findViewById(R.id.btnIngresarTermino)
         materiaActual = findViewById(R.id.txtMateriaActual)
         imagen = findViewById(R.id.txtURLImagen)
+        usuarioActual = findViewById(R.id.txtUsuarioActual)
+        btnDescartarTermino = findViewById(R.id.btnDescartarTermino)
 
         btnImagen = findViewById(R.id.btnImagen)
         btnImagen.setOnClickListener{
@@ -72,20 +79,28 @@ class IngresoTerminoActivity: AppCompatActivity() {
 
         val extras = intent.extras
         materiaActual.text = extras?.getString("nombre").toString()
+        usuarioActual.text = extras?.getString("usuarioActual").toString()
         termino.materia = materiaActual.text.toString()
 
         arrowLeft.setOnClickListener{
             val intent = Intent(this,ListaTermino::class.java)
             intent.putExtra("nombre",materiaActual.text.toString())
+            intent.putExtra("usuarioActual",usuarioActual.text.toString())
+            startActivity(intent)
+        }
+        btnDescartarTermino.setOnClickListener{
+            val intent = Intent(this,ListaTermino::class.java)
+            intent.putExtra("nombre",materiaActual.text.toString())
+            intent.putExtra("usuarioActual",usuarioActual.text.toString())
             startActivity(intent)
         }
 
 
         //Ingreso de una termino a la base
         btnIngresarTermino.setOnClickListener{
-            termino.nombre = txtTermino.text.toString()
-            termino.descripcion = txtDescripcion.text.toString()
-            termino.imagen = imagen.text.toString()
+            termino.nombre = txtTermino.text.toString().trim()
+            termino.descripcion = txtDescripcion.text.toString().trim()
+            termino.imagen = imagen.text.toString().trim()
 
             val builder = AlertDialog.Builder(this)
 
@@ -102,6 +117,7 @@ class IngresoTerminoActivity: AppCompatActivity() {
                 builder.setPositiveButton("Aceptar") { dialog, which ->
                     val intent = Intent(this,ListaTermino::class.java)
                     intent.putExtra("nombre",materiaActual.text.toString())
+                    intent.putExtra("usuarioActual",usuarioActual.text.toString())
                     startActivity(intent)
                 }
             }else {
@@ -120,6 +136,7 @@ class IngresoTerminoActivity: AppCompatActivity() {
 
 
     fun subirImagenALmacenamiento(uri: Uri) {
+        showProgressDialog()
         val storage = FirebaseStorage.getInstance()
         val storageRef: StorageReference = storage.reference
 
@@ -149,5 +166,22 @@ class IngresoTerminoActivity: AppCompatActivity() {
         }.addOnFailureListener { exception ->
             // Manejar errores durante la subida del archivo
         }
+    }
+    private fun showProgressDialog() {
+        // Inflar el layout del ProgressDialog
+        val dialogView = layoutInflater.inflate(R.layout.progress_bar, null)
+
+        // Crear el AlertDialog
+        val progressDialog = AlertDialog.Builder(this)
+            .setView(dialogView)
+            .setCancelable(false) // El diálogo no se puede cancelar tocando fuera de él
+            .create()
+
+        // Mostrar el AlertDialog
+        progressDialog.show()
+        // Descartar el AlertDialog después de 3 segundos
+        Handler(Looper.getMainLooper()).postDelayed({
+            progressDialog.dismiss()
+        }, 5000) // 3000 milisegundos = 3 segundos
     }
 }
